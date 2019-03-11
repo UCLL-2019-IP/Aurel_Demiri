@@ -7,29 +7,31 @@
     <jsp:param name="title" value="Gerechten"/>
 </jsp:include>
 <body>
-<h1 class="title">Gerechten</h1>
-<c:choose>
-    <c:when test="${gerechten.size() > 0}">
-        <table class="table">
-            <thead>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody>
-            <c:forEach var="gerecht" items="${gerechten}">
+<section class="section">
+    <h1 class="title">Gerechten</h1>
+    <c:choose>
+        <c:when test="${gerechten.size() > 0}">
+            <table class="table">
+                <thead>
                 <tr>
-                    <td>${gerecht.name}</td>
-                    <td>${gerecht.price}&euro;</td>
+                    <th>Beschrijving</th>
+                    <th>Prijs</th>
                 </tr>
-            </c:forEach>
-            </tbody>
-        </table>
-    </c:when>
-    <c:otherwise>
-        <h3 class="subtitle">Er staan geen gerechten op het menu</h3>
-    </c:otherwise>
-</c:choose>
+                </thead>
+                <tbody>
+                <c:forEach var="gerecht" items="${gerechten}">
+                    <tr>
+                        <td>${gerecht.beschrijving}</td>
+                        <td>${gerecht.prijs}&euro;</td>
+                    </tr>
+                </c:forEach>
+                </tbody>
+            </table>
+        </c:when>
+        <c:otherwise>
+            <h3 class="subtitle">Er staan geen gerechten op het menu</h3>
+        </c:otherwise>
+    </c:choose>
+</section>
 </body>
 </html>

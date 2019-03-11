@@ -18,4 +18,10 @@ public class GerechtenController implements WebMvcConfigurer {
         model.addAttribute("gerechten", gerechtenService.getAllGerechten());
         return "gerechten";
     }
+
+    @GetMapping("/gerechten/change")
+    public String changeGerechten(Model model) {
+        model.addAttribute("gerechten", gerechtenService.getAllGerechten());
+        return "changeGerechten";
+    }
 }

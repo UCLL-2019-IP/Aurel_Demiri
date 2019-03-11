@@ -5,44 +5,34 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 public class Gerecht {
-    private int id;
 
     @NotNull
     @NotEmpty
     @Size(min = 1, max = 30)
-    private String name;
+    private String beschrijving;
 
     @NotNull
     @NotEmpty
     @Size(min = 5, max = 50)
-    private Double price;
+    private Double prijs;
 
     public Gerecht() {
     }
 
-    public Gerecht(int id, String name, Double price) {
-        this.id = id;
-        this.name = name;
-        this.price = price;
+    public Gerecht(String beschrijving, Double prijs) {
+        this.beschrijving = beschrijving;
+        this.prijs = prijs;
     }
 
-    public int getId() {
-        return id;
+    public String getBeschrijving() {
+        return beschrijving;
     }
 
-    public void setId(int id) {
-        this.id = id;
+    public void setBeschrijving(String beschrijving) {
+        this.beschrijving = beschrijving;
     }
 
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public Double getPrice() {
-        return price;
+    public Double getPrijs() {
+        return prijs;
     }
 }
