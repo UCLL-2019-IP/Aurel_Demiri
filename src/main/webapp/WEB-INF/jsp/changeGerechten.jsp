@@ -9,21 +9,12 @@
 <body>
 <section class="section">
     <h1 class="title">Change Gerechten</h1>
-    <c:if test="${errors.size() > 0 }">
-        <div class="notification is-danger">
-            <ul>
-                <c:forEach var="error" items="${errors}">
-                    <li>${error}</li>
-                </c:forEach>
-            </ul>
-        </div>
-    </c:if>
     <c:choose>
         <c:when test="${gerechten.size() > 0}">
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Name</th>
+                    <th>Beschrijving</th>
                     <th></th>
                     <th></th>
                 </tr>
