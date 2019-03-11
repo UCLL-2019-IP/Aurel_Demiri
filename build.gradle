@@ -1,0 +1,57 @@
+group 'com.typhonsoftwaresolutions'
+version '1.0'
+
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+apply plugin: 'io.spring.dependency-management'
+
+bootJar {
+    baseName = 'ip-proj'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+// ################################################################
+// Every project and task can contain user-defined properties,
+// called extra properties, for use in the script.
+// You define them in the ext block.
+// ################################################################
+
+ext{
+    jstlVersion = '1.2' // now you can use this throughout the script
+    tomcatEmbedJasperVersion = '9.0.10'
+    ecjVersion = '4.4.2'
+}
+
+dependencies {
+    // needed for Spring Boot -> embedded tomcat
+    compile("org.springframework.boot:spring-boot-starter-web")
+    
+    // needed because we use jsp
+    compile group: 'javax.servlet', name: 'jstl', version: jstlVersion // use the user-defined property
+    
+    // needed because we use jsp
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
+    
+    // needed because we use jsp
+    compile group: 'org.eclipse.jdt.core.compiler', name: 'ecj', version: ecjVersion
+
+    // for testing
+    testCompile('org.springframework.boot:spring-boot-starter-test')
+}
