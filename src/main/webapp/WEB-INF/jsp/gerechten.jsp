@@ -10,19 +10,28 @@
 </head>
 <body>
 <h1>Gerechten</h1>
-<table>
-    <thead>
-    <th>Name</th>
-    <th>Price</th>
-    </thead>
-    <tbody>
-    <c:forEach var="gerecht" items="${gerechten}">
-        <tr>
-            <td>${gerecht.name}</td>
-            <td>${gerecht.price}&euro;</td>
-        </tr>
-    </c:forEach>
-    </tbody>
-</table>
+<c:choose>
+    <c:when test="${gerechten.size() > 0}">
+        <table>
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+            </tr>
+            </thead>
+            <tbody>
+            <c:forEach var="gerecht" items="${gerechten}">
+                <tr>
+                    <td>${gerecht.name}</td>
+                    <td>${gerecht.price}&euro;</td>
+                </tr>
+            </c:forEach>
+            </tbody>
+        </table>
+    </c:when>
+    <c:otherwise>
+        <h3>Er staan geen gerechten op het menu</h3>
+    </c:otherwise>
+</c:choose>
 </body>
 </html>
