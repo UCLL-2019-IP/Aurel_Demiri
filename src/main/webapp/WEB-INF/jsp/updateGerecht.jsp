@@ -4,13 +4,13 @@
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="head.jsp">
-    <jsp:param name="title" value="Add Gerecht"/>
+    <jsp:param name="title" value="Update Gerecht"/>
 </jsp:include>
 <body>
 <section class="section">
     <div class="columns is-desktop">
         <div class="column is-half">
-            <h1 class="title">Add Gerecht</h1>
+            <h1 class="title">Update Gerecht</h1>
             <c:if test="${errors.size() > 0 }">
                 <div class="notification is-danger">
                     <ul>
@@ -20,7 +20,7 @@
                     </ul>
                 </div>
             </c:if>
-            <form method="post" action="add">
+            <form method="post" action="update?oudeBeschrijving=${gerecht.beschrijving}">
                 <div class="field is-horizontal">
                     <div class="field-label">
                         <label class="label" for="beschrijving">Beschrijving</label>
@@ -29,7 +29,7 @@
                         <div class="field">
                             <div class="control">
                                 <input class="input" type="text" required maxlength="50" id="beschrijving"
-                                       name="beschrijving">
+                                       name="beschrijving" value="${gerecht.beschrijving}">
                             </div>
                         </div>
                     </div>
@@ -42,7 +42,7 @@
                         <div class="field">
                             <div class="control">
                                 <input class="input" type="number" required min="0.1" max="10" step="0.01" id="prijs"
-                                       name="prijs">
+                                       name="prijs" value="${gerecht.prijs}">
                             </div>
                         </div>
                     </div>
@@ -74,7 +74,7 @@
                     </p>
                     <p class="control">
                         <button class="button is-primary">
-                            Add
+                            Update
                         </button>
                     </p>
                 </div>

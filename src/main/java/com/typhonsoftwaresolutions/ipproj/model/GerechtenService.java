@@ -40,4 +40,11 @@ public class GerechtenService {
 
         throw new IllegalArgumentException("Gerecht that has this beschrijving could not be found");
     }
+
+    public void updateGerecht(String beschrijving, Gerecht gerecht) {
+        Gerecht foundGerecht = findGerechtByBeschrijving(beschrijving);
+        foundGerecht.setBeschrijving(gerecht.getBeschrijving());
+        foundGerecht.setPrijs(gerecht.getPrijs());
+        foundGerecht.setType(gerecht.getType());
+    }
 }

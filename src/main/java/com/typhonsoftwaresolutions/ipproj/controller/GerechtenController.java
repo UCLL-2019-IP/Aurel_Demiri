@@ -31,7 +31,7 @@ public class GerechtenController implements WebMvcConfigurer {
     }
 
     @GetMapping("/gerechten/add")
-    public String addGerechtForm(Model model) {
+    public String addGerechtForm() {
         return "addGerecht";
     }
 
@@ -42,7 +42,24 @@ public class GerechtenController implements WebMvcConfigurer {
             return "addGerecht";
         } else {
             gerechtenService.addGerecht(gerecht);
-            model.addAttribute("gerechten", gerechtenService.getAllGerechten());
+            return "redirect:./change";
+        }
+    }
+
+    @GetMapping("/gerechten/update")
+    public String updateGerechtForm(@RequestParam("beschrijving") String beschrijving, Model model) {
+        Gerecht gerecht = gerechtenService.findGerechtByBeschrijving(beschrijving);
+        model.addAttribute("gerecht", gerecht);
+        return "updateGerecht";
+    }
+
+    @PostMapping("/gerechten/update")
+    public String updateGerecht(@RequestParam("oudeBeschrijving") String oudeBeschrijving, @Valid Gerecht gerecht, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            model.addAttribute("errors", bindingResult.getFieldErrors());
+            return "updateGerecht";
+        } else {
+            gerechtenService.updateGerecht(oudeBeschrijving, gerecht);
             return "redirect:./change";
         }
     }
