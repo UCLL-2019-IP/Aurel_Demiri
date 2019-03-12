@@ -24,12 +24,10 @@
                     <tr>
                         <td>${gerecht.beschrijving}</td>
                         <td>
-                            <a class="button" href="update?beschrijving=${gerecht.beschrijving}">Update</a>
+                            <a class="button is-light" href="update?beschrijving=${gerecht.beschrijving}">Update</a>
                         </td>
                         <td>
-                            <form method="post" action="delete?beschrijving=${gerecht.beschrijving}">
-                                <button class="button is-danger" type="submit">Delete</button>
-                            </form>
+                            <a class="button is-danger" href="delete?beschrijving=${gerecht.beschrijving}">Delete</a>
                         </td>
                     </tr>
                 </c:forEach>

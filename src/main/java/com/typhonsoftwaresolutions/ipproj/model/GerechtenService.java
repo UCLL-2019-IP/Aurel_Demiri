@@ -26,4 +26,18 @@ public class GerechtenService {
     public void addGerecht(Gerecht gerecht) {
         gerechten.add(gerecht);
     }
+
+    public void deleteGerecht(Gerecht gerecht) {
+        gerechten.remove(gerecht);
+    }
+
+    public Gerecht findGerechtByBeschrijving(String beschrijving) {
+        for (Gerecht gerecht : gerechten) {
+            if (gerecht.getBeschrijving().equals(beschrijving)) {
+                return gerecht;
+            }
+        }
+
+        throw new IllegalArgumentException("Gerecht that has this beschrijving could not be found");
+    }
 }

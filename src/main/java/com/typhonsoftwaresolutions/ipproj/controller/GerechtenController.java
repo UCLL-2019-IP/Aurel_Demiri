@@ -3,11 +3,11 @@ package com.typhonsoftwaresolutions.ipproj.controller;
 import com.typhonsoftwaresolutions.ipproj.model.Gerecht;
 import com.typhonsoftwaresolutions.ipproj.model.GerechtenService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.validation.Valid;
@@ -45,5 +45,24 @@ public class GerechtenController implements WebMvcConfigurer {
             model.addAttribute("gerechten", gerechtenService.getAllGerechten());
             return "redirect:./change";
         }
+    }
+
+    @GetMapping("/gerechten/delete")
+    public String deleteGerechtConfirmation(@RequestParam("beschrijving") String beschrijving, Model model) {
+        Gerecht gerecht = gerechtenService.findGerechtByBeschrijving(beschrijving);
+        model.addAttribute("gerecht", gerecht);
+        return "deleteGerechtConfirmation";
+    }
+
+    @PostMapping("/gerechten/delete")
+    public String deleteGerecht(@RequestParam("beschrijving") String beschrijving) {
+        Gerecht gerecht = gerechtenService.findGerechtByBeschrijving(beschrijving);
+        gerechtenService.deleteGerecht(gerecht);
+        return "redirect:./change";
+    }
+
+    @ResponseStatus(value = HttpStatus.BAD_REQUEST, reason = "Requested ID not found!")
+    @ExceptionHandler(value = IllegalArgumentException.class)
+    public void badIdExceptionHandler() {
     }
 }
