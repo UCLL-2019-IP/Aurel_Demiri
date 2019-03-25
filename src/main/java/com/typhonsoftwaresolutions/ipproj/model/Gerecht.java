@@ -1,8 +1,21 @@
 package com.typhonsoftwaresolutions.ipproj.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.*;
 
+@SuppressWarnings("WeakerAccess")
+@Entity
 public class Gerecht {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    @JsonIgnore
+    private Integer id;
 
     @NotEmpty(message = "Beschrijving should not be empty")
     @Size(min = 4, max = 50, message = "Beschrijving length should be between 4 and 50")
