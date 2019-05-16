@@ -11,12 +11,11 @@ buildscript {
 }
 
 apply plugin: 'java'
-apply plugin: 'war'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-bootWar {
+bootJar {
     baseName = 'ip-proj'
     version =  '0.1.0'
 }
@@ -41,7 +40,8 @@ ext{
 }
 
 dependencies {
-    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
+    // needed for Spring Boot -> embedded tomcat
+    compile("org.springframework.boot:spring-boot-starter-web")
 
     // needed because we use jsp
     compile group: 'javax.servlet', name: 'jstl', version: jstlVersion // use the user-defined property
