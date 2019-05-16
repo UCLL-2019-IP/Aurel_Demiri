@@ -36,7 +36,7 @@ targetCompatibility = 1.8
 
 ext{
     jstlVersion = '1.2' // now you can use this throughout the script
-    tomcatEmbedJasperVersion = '8.5.20'
+    tomcatEmbedJasperVersion = '9.0.17'
 }
 
 dependencies {
