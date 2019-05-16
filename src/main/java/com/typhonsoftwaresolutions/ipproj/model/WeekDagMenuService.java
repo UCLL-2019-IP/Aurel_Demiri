@@ -25,12 +25,22 @@ public class WeekDagMenuService {
         dagMenuRepository.save(dagMenu);
     }
 
-    public void patchDagMenu(LocalDate datum, Gerecht soep, Gerecht dagschotel, Gerecht veggie) {
+    public void patchDagMenu(LocalDate datum, DagMenu dagMenu) {
         DagMenu foundDagMenu = dagMenuRepository.findByDatum(datum);
-        foundDagMenu.setSoep(soep);
-        foundDagMenu.setDagschotel(dagschotel);
-        foundDagMenu.setVeggie(veggie);
+
+        if (dagMenu.getSoep() != null)
+            foundDagMenu.setSoep(dagMenu.getSoep());
+
+        if (dagMenu.getDagschotel() != null)
+            foundDagMenu.setDagschotel(dagMenu.getDagschotel());
+
+        if (dagMenu.getVeggie() != null)
+            foundDagMenu.setVeggie(dagMenu.getVeggie());
 
         dagMenuRepository.save(foundDagMenu);
+    }
+
+    public void deleteDagMenu(LocalDate datum) {
+        dagMenuRepository.delete(dagMenuRepository.findByDatum(datum));
     }
 }

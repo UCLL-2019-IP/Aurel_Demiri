@@ -27,12 +27,6 @@ public class DagMenuController {
 
     @PostMapping("/dagmenu/add")
     public List<DagMenu> addDagMenu(@RequestBody @Valid DagMenu dagMenu) {
-        // Improper fix for: Not-null property references a transient value
-        // USE ID FOR GOD'S SAKE
-        dagMenu.setSoep(gerechtenService.findGerechtByBeschrijving(dagMenu.getSoep().getBeschrijving()));
-        dagMenu.setDagschotel(gerechtenService.findGerechtByBeschrijving(dagMenu.getDagschotel().getBeschrijving()));
-        dagMenu.setVeggie(gerechtenService.findGerechtByBeschrijving(dagMenu.getVeggie().getBeschrijving()));
-
         weekDagMenuService.addDagMenu(dagMenu);
         return weekDagMenuService.getAllDagMenu();
     }
@@ -40,11 +34,11 @@ public class DagMenuController {
     @PatchMapping("/dagmenu/change/{datum}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void changeDagMenu(@PathVariable("datum") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate datum, @RequestBody DagMenu dagMenu) {
-        // Improper fix for: Not-null property references a transient value
-        // USE ID FOR GOD'S SAKE
-        dagMenu.setSoep(gerechtenService.findGerechtByBeschrijving(dagMenu.getSoep().getBeschrijving()));
-        dagMenu.setDagschotel(gerechtenService.findGerechtByBeschrijving(dagMenu.getDagschotel().getBeschrijving()));
-        dagMenu.setVeggie(gerechtenService.findGerechtByBeschrijving(dagMenu.getVeggie().getBeschrijving()));
-        weekDagMenuService.patchDagMenu(datum, dagMenu.getSoep(), dagMenu.getDagschotel(), dagMenu.getVeggie());
+        weekDagMenuService.patchDagMenu(datum, dagMenu);
+    }
+
+    @DeleteMapping("/dagmenu/delete/{datum}")
+    public void deleteDagMenu(@PathVariable("datum") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate datum) {
+        weekDagMenuService.deleteDagMenu(datum);
     }
 }

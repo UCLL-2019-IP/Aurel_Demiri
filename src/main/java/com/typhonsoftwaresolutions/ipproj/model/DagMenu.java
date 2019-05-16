@@ -1,7 +1,6 @@
 package com.typhonsoftwaresolutions.ipproj.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
-import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
@@ -14,7 +13,6 @@ public class DagMenu {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private Integer id;
 
     @NotNull
@@ -46,6 +44,14 @@ public class DagMenu {
         this.soep = soep;
         this.dagschotel = dagschotel;
         this.veggie = veggie;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getDag() {

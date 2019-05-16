@@ -34,7 +34,7 @@ public class GerechtenService {
         if (x != null)
             return x;
 
-        throw new IllegalArgumentException("Gerecht that has this beschrijving could not be found");
+        throw new IllegalArgumentException("Gerecht with this beschrijving could not be found");
     }
 
     public void updateGerecht(String beschrijving, Gerecht gerecht) {

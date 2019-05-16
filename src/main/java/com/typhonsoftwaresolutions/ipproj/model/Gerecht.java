@@ -1,7 +1,5 @@
 package com.typhonsoftwaresolutions.ipproj.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +12,6 @@ public class Gerecht {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    @JsonIgnore
     private Integer id;
 
     @NotEmpty(message = "Beschrijving should not be empty")
@@ -36,6 +33,14 @@ public class Gerecht {
         this.beschrijving = beschrijving;
         this.prijs = prijs;
         this.type = type;
+    }
+
+    public Integer getId() {
+        return id;
+    }
+
+    public void setId(Integer id) {
+        this.id = id;
     }
 
     public String getBeschrijving() {

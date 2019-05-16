@@ -22,7 +22,6 @@ public class Application {
     @Bean
     public CommandLineRunner runner(GerechtenRepository gerechtenRepository, DagMenuRepository dagMenuRepository) {
         return args -> {
-
             gerechtenRepository.save(new Gerecht("Bloemkool soep", 1d, "SOEP"));
             gerechtenRepository.save(new Gerecht("Tomatensoep", 1d, "SOEP"));
             gerechtenRepository.save(new Gerecht("Pompoensoep", 1d, "SOEP"));
