@@ -18,6 +18,11 @@ public class GerechtenController implements WebMvcConfigurer {
     @Autowired
     private GerechtenService gerechtenService;
 
+    @GetMapping("/")
+    public String home() {
+        return "redirect:./gerechten";
+    }
+
     @GetMapping("/gerechten")
     public String gerechten(Model model) {
         model.addAttribute("gerechten", gerechtenService.getAllGerechten());
