@@ -47,7 +47,7 @@ dependencies {
     compile group: 'javax.servlet', name: 'jstl', version: jstlVersion
 
     // needed for Tomcat Embedded
-    providedCompile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
 
     // needed for db stuff?
     compile("org.springframework.boot:spring-boot-starter-data-rest")
