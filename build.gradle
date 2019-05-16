@@ -6,16 +6,17 @@ buildscript {
         mavenCentral()
     }
     dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.0.5.RELEASE")
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:2.1.4.RELEASE")
     }
 }
 
 apply plugin: 'java'
+apply plugin: 'war'
 apply plugin: 'idea'
 apply plugin: 'org.springframework.boot'
 apply plugin: 'io.spring.dependency-management'
 
-bootJar {
+bootWar {
     baseName = 'ip-proj'
     version =  '0.1.0'
 }
@@ -35,22 +36,18 @@ targetCompatibility = 1.8
 
 ext{
     jstlVersion = '1.2' // now you can use this throughout the script
-    tomcatEmbedJasperVersion = '9.0.10'
-    ecjVersion = '4.4.2'
+    tomcatEmbedJasperVersion = '8.5.40'
 }
 
 dependencies {
-    // needed for Spring Boot -> embedded tomcat
+    // needed for Tomcat Embedded
+    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
+
+    // needed for Spring Boot
     compile("org.springframework.boot:spring-boot-starter-web")
 
     // needed because we use jsp
-    compile group: 'javax.servlet', name: 'jstl', version: jstlVersion // use the user-defined property
-
-    // needed because we use jsp
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
-
-    // needed because we use jsp
-    compile group: 'org.eclipse.jdt.core.compiler', name: 'ecj', version: ecjVersion
+    compile group: 'javax.servlet', name: 'jstl', version: jstlVersion
 
     // needed for db stuff?
     compile("org.springframework.boot:spring-boot-starter-data-rest")
