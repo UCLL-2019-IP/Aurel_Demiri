@@ -8,7 +8,7 @@
 </jsp:include>
 <body>
 <section class="section">
-    <h1 class="title">Gerechten</h1>
+    <h1 class="title">Gerechten Overzicht</h1>
     <c:choose>
         <c:when test="${gerechten.size() > 0}">
             <table class="table">
