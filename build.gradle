@@ -36,7 +36,7 @@ targetCompatibility = 1.8
 
 ext{
     jstlVersion = '1.2' // now you can use this throughout the script
-    tomcatEmbedJasperVersion = '8.5.40'
+    tomcatEmbedJasperVersion = '8.5.20'
 }
 
 dependencies {
@@ -44,7 +44,7 @@ dependencies {
     compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
 
     // needed for Spring Boot
-    compile("org.springframework.boot:spring-boot-starter-web")
+    // scompile("org.springframework.boot:spring-boot-starter-web")
 
     // needed because we use jsp
     compile group: 'javax.servlet', name: 'jstl', version: jstlVersion
