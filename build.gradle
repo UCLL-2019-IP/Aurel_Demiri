@@ -41,7 +41,10 @@ ext{
 
 dependencies {
     // needed for Tomcat Embedded
-    compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
+    //compile group: 'org.apache.tomcat.embed', name: 'tomcat-embed-jasper', version: tomcatEmbedJasperVersion
+
+    // needed for Spring Boot
+    compile("org.springframework.boot:spring-boot-starter-web")
 
     // needed because we use jsp
     compile group: 'javax.servlet', name: 'jstl', version: jstlVersion
