@@ -41,8 +41,7 @@ ext{
 }
 
 dependencies {
-    // needed for Spring Boot -> embedded tomcat
-    compile("org.springframework.boot:spring-boot-starter-web")
+    providedRuntime 'org.springframework.boot:spring-boot-starter-tomcat'
 
     // needed because we use jsp
     compile group: 'javax.servlet', name: 'jstl', version: jstlVersion // use the user-defined property
