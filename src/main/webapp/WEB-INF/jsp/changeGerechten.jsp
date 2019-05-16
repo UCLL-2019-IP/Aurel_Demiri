@@ -15,6 +15,7 @@
                 <thead>
                 <tr>
                     <th>Beschrijving</th>
+                    <th>Prijs</th>
                     <th></th>
                     <th></th>
                 </tr>
@@ -23,6 +24,7 @@
                 <c:forEach var="gerecht" items="${gerechten}">
                     <tr>
                         <td>${gerecht.beschrijving}</td>
+                        <td>${gerecht.prijs}&euro;</td>
                         <td>
                             <a class="button is-light" href="update?beschrijving=${gerecht.beschrijving}">Update</a>
                         </td>
