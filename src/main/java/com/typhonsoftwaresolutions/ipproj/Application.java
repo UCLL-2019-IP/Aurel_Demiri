@@ -1,8 +1,16 @@
 package com.typhonsoftwaresolutions.ipproj;
 
+import com.typhonsoftwaresolutions.ipproj.model.DagMenu;
+import com.typhonsoftwaresolutions.ipproj.model.Gerecht;
+import com.typhonsoftwaresolutions.ipproj.repository.DagMenuRepository;
+import com.typhonsoftwaresolutions.ipproj.repository.GerechtenRepository;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.autoconfigure.data.rest.RepositoryRestMvcAutoConfiguration;
+import org.springframework.context.annotation.Bean;
+
+import java.time.LocalDate;
 
 @SpringBootApplication(exclude = RepositoryRestMvcAutoConfiguration.class)
 public class Application {
@@ -11,7 +19,6 @@ public class Application {
         SpringApplication.run(Application.class, args);
     }
 
-    /*
     @Bean
     public CommandLineRunner runner(GerechtenRepository gerechtenRepository, DagMenuRepository dagMenuRepository) {
         return args -> {
@@ -27,5 +34,4 @@ public class Application {
             dagMenuRepository.save(new DagMenu("Dinsdag", LocalDate.of(2019, 2, 19), gerechtenRepository.findByBeschrijving("Tomatensoep"), gerechtenRepository.findByBeschrijving("Konijn met pruimen"), gerechtenRepository.findByBeschrijving("Groentenlasange")));
         };
     }
-    */
 }
