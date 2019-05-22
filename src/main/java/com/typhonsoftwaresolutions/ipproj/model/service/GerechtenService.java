@@ -1,5 +1,6 @@
-package com.typhonsoftwaresolutions.ipproj.model;
+package com.typhonsoftwaresolutions.ipproj.model.service;
 
+import com.typhonsoftwaresolutions.ipproj.model.Gerecht;
 import com.typhonsoftwaresolutions.ipproj.repository.GerechtenRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

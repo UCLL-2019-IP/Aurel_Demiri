@@ -7,6 +7,5 @@ import org.springframework.stereotype.Repository;
 import java.time.LocalDate;
 
 @Repository
-public interface DagMenuRepository extends JpaRepository<DagMenu, Integer> {
-    DagMenu findByDatum(LocalDate datum);
+public interface DagMenuRepository extends JpaRepository<DagMenu, LocalDate> {
 }

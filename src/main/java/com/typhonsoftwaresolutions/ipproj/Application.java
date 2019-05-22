@@ -30,8 +30,8 @@ public class Application {
             gerechtenRepository.save(new Gerecht("Groentenlasange", 4d, "VEGGIE"));
             gerechtenRepository.save(new Gerecht("Veggie pasta", 4d, "VEGGIE"));
 
-            dagMenuRepository.save(new DagMenu("Maandag", LocalDate.of(2019, 2, 18), gerechtenRepository.findByBeschrijving("Bloemkool soep"), gerechtenRepository.findByBeschrijving("Cordon Blue"), gerechtenRepository.findByBeschrijving("Veggie pasta")));
-            dagMenuRepository.save(new DagMenu("Dinsdag", LocalDate.of(2019, 2, 19), gerechtenRepository.findByBeschrijving("Tomatensoep"), gerechtenRepository.findByBeschrijving("Konijn met pruimen"), gerechtenRepository.findByBeschrijving("Groentenlasange")));
+            dagMenuRepository.save(new DagMenu(LocalDate.of(2019, 2, 18), gerechtenRepository.findByBeschrijving("Bloemkool soep"), gerechtenRepository.findByBeschrijving("Cordon Blue"), gerechtenRepository.findByBeschrijving("Veggie pasta")));
+            dagMenuRepository.save(new DagMenu(LocalDate.of(2019, 2, 19), gerechtenRepository.findByBeschrijving("Tomatensoep"), gerechtenRepository.findByBeschrijving("Konijn met pruimen"), gerechtenRepository.findByBeschrijving("Groentenlasange")));
         };
     }
 }

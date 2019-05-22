@@ -7,6 +7,7 @@
     <jsp:param name="title" value="Change Gerechten"/>
 </jsp:include>
 <body>
+<jsp:include page="nav.jsp"/>
 <section class="section">
     <h1 class="title">Change Gerechten</h1>
     <c:choose>

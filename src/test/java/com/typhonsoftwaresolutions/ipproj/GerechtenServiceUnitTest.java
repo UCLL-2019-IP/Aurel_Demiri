@@ -1,7 +1,7 @@
 package com.typhonsoftwaresolutions.ipproj;
 
 import com.typhonsoftwaresolutions.ipproj.model.Gerecht;
-import com.typhonsoftwaresolutions.ipproj.model.GerechtenService;
+import com.typhonsoftwaresolutions.ipproj.model.service.GerechtenService;
 import com.typhonsoftwaresolutions.ipproj.repository.GerechtenRepository;
 import org.junit.Before;
 import org.junit.Test;

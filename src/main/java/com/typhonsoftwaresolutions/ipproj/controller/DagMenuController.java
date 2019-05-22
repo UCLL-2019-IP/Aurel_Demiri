@@ -1,8 +1,7 @@
 package com.typhonsoftwaresolutions.ipproj.controller;
 
 import com.typhonsoftwaresolutions.ipproj.model.DagMenu;
-import com.typhonsoftwaresolutions.ipproj.model.GerechtenService;
-import com.typhonsoftwaresolutions.ipproj.model.WeekDagMenuService;
+import com.typhonsoftwaresolutions.ipproj.model.service.DagMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
@@ -15,30 +14,37 @@ import java.util.List;
 @RestController
 public class DagMenuController {
 
-    private final WeekDagMenuService weekDagMenuService;
-
-    private final GerechtenService gerechtenService;
+    private final DagMenuService dagMenuService;
 
     @Autowired
-    public DagMenuController(WeekDagMenuService weekDagMenuService, GerechtenService gerechtenService) {
-        this.gerechtenService = gerechtenService;
-        this.weekDagMenuService = weekDagMenuService;
+    public DagMenuController(DagMenuService dagMenuService) {
+        this.dagMenuService = dagMenuService;
+    }
+
+    @GetMapping("/dagmenu")
+    public List<DagMenu> getAllDagMenu() {
+        return dagMenuService.getAllDagMenu();
+    }
+
+    @GetMapping("/dagmenu/{datum}")
+    public DagMenu getDagMenu(@PathVariable("datum") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate datum) {
+        return dagMenuService.getDagMenu(datum);
     }
 
     @PostMapping("/dagmenu/add")
     public List<DagMenu> addDagMenu(@RequestBody @Valid DagMenu dagMenu) {
-        weekDagMenuService.addDagMenu(dagMenu);
-        return weekDagMenuService.getAllDagMenu();
+        dagMenuService.addDagMenu(dagMenu);
+        return dagMenuService.getAllDagMenu();
     }
 
     @PatchMapping("/dagmenu/change/{datum}")
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void changeDagMenu(@PathVariable("datum") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate datum, @RequestBody DagMenu dagMenu) {
-        weekDagMenuService.patchDagMenu(datum, dagMenu);
+        dagMenuService.patchDagMenu(datum, dagMenu);
     }
 
     @DeleteMapping("/dagmenu/delete/{datum}")
     public void deleteDagMenu(@PathVariable("datum") @DateTimeFormat(pattern = "dd-MM-yyyy") LocalDate datum) {
-        weekDagMenuService.deleteDagMenu(datum);
+        dagMenuService.deleteDagMenu(datum);
     }
 }

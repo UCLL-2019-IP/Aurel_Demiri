@@ -2,26 +2,20 @@ package com.typhonsoftwaresolutions.ipproj.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
-import javax.persistence.*;
-import javax.validation.constraints.NotEmpty;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Pattern;
 import java.time.LocalDate;
 
 @Entity
 public class DagMenu {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-
-    @NotNull
-    @NotEmpty
-    @Pattern(regexp = "Maandag|Dinsdag|Woensdag|Donderdag|Vrijdag", message = "Invalid dag format")
-    private String dag;
-
     @NotNull
     private LocalDate datum;
+
+    private String dag;
 
     @NotNull
     @ManyToOne
@@ -38,28 +32,32 @@ public class DagMenu {
     public DagMenu() {
     }
 
-    public DagMenu(String dag, LocalDate datum, Gerecht soep, Gerecht dagschotel, Gerecht veggie) {
-        this.dag = dag;
+    public DagMenu(LocalDate datum, Gerecht soep, Gerecht dagschotel, Gerecht veggie) {
         this.datum = datum;
         this.soep = soep;
         this.dagschotel = dagschotel;
         this.veggie = veggie;
     }
 
-    public Integer getId() {
-        return id;
-    }
-
-    public void setId(Integer id) {
-        this.id = id;
-    }
-
     public String getDag() {
-        return dag;
-    }
-
-    public void setDag(String dag) {
-        this.dag = dag;
+        switch (datum.getDayOfWeek()) {
+            case MONDAY:
+                return "MAANDAG";
+            case TUESDAY:
+                return "DINSDAG";
+            case WEDNESDAY:
+                return "WOENSDAG";
+            case THURSDAY:
+                return "DONDERDAG";
+            case FRIDAY:
+                return "VRIJDAG";
+            case SATURDAY:
+                return "ZATERDAG";
+            case SUNDAY:
+                return "ZONDAG";
+            default:
+                return "ERROR";
+        }
     }
 
     @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd-MM-yyyy")

@@ -7,6 +7,7 @@
     <jsp:param name="title" value="Delete Gerecht"/>
 </jsp:include>
 <body>
+<jsp:include page="nav.jsp"/>
 <section class="section">
     <div class="columns is-desktop">
         <div class="column is-one-third">

@@ -1,26 +1,24 @@
 package com.typhonsoftwaresolutions.ipproj.controller;
 
 import com.typhonsoftwaresolutions.ipproj.model.Gerecht;
-import com.typhonsoftwaresolutions.ipproj.model.GerechtenService;
+import com.typhonsoftwaresolutions.ipproj.model.service.GerechtenService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 import javax.validation.Valid;
 
 @Controller
-public class GerechtenController implements WebMvcConfigurer {
+public class GerechtenController {
+
+    private final GerechtenService gerechtenService;
 
     @Autowired
-    private GerechtenService gerechtenService;
-
-    @GetMapping("/")
-    public String home() {
-        return "redirect:./gerechten";
+    public GerechtenController(GerechtenService gerechtenService) {
+        this.gerechtenService = gerechtenService;
     }
 
     @GetMapping("/gerechten")
