@@ -2,22 +2,25 @@
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${pageContext.response.locale}">
+<spring:message code="menu.list" var="pagetitle"/>
 <jsp:include page="head.jsp">
-    <jsp:param name="title" value="Gerechten"/>
+    <jsp:param name="title" value="${pagetitle}"/>
 </jsp:include>
-<body>
+<body class="main">
 <jsp:include page="nav.jsp"/>
 <section class="section">
-    <h1 class="title">Gerechten Overzicht</h1>
+    <h1 class="title">${pagetitle}</h1>
     <c:choose>
         <c:when test="${gerechten.size() > 0}">
             <table class="table">
                 <thead>
                 <tr>
-                    <th>Beschrijving</th>
-                    <th>Prijs</th>
+                    <th><spring:message code="description"/></th>
+                    <th><spring:message code="price"/></th>
                 </tr>
                 </thead>
                 <tbody>
@@ -31,12 +34,13 @@
             </table>
         </c:when>
         <c:otherwise>
-            <h3 class="subtitle">Er staan geen gerechten op het menu</h3>
+            <h3 class="subtitle"><spring:message code="menu.empty"/></h3>
         </c:otherwise>
     </c:choose>
     <sec:authorize access="hasRole('ADMIN')">
-        <a class="button is-primary is-medium" href="/gerechten/change">Change Gerechten</a>
+        <a class="button is-primary is-medium" href="/gerechten/change"><spring:message code="menu.edit"/></a>
     </sec:authorize>
 </section>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

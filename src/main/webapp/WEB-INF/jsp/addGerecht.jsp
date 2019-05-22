@@ -6,7 +6,7 @@
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="Add Gerecht"/>
 </jsp:include>
-<body>
+<body class="main">
 <jsp:include page="nav.jsp"/>
 <section class="section">
     <div class="columns is-desktop">
@@ -83,5 +83,6 @@
         </div>
     </div>
 </section>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

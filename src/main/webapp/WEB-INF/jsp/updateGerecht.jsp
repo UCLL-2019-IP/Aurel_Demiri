@@ -1,17 +1,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
 <!DOCTYPE html>
 <html lang="en">
 <jsp:include page="head.jsp">
-    <jsp:param name="title" value="Update Gerecht"/>
+    <jsp:param name="title" value="Bewerk Gerecht"/>
 </jsp:include>
-<body>
+<body class="main">
 <jsp:include page="nav.jsp"/>
 <section class="section">
     <div class="columns is-desktop">
         <div class="column is-half">
-            <h1 class="title">Update Gerecht</h1>
+            <h1 class="title">Bewerk Gerecht</h1>
             <c:if test="${errors.size() > 0 }">
                 <div class="notification is-danger">
                     <ul>
@@ -57,7 +58,7 @@
                             <div class="control">
                                 <div class="select">
                                     <select id="type" name="type" required>
-                                        <option value="" selected="selected" hidden="hidden">Choose here</option>
+                                        <option value="" selected="selected" hidden="hidden">Kies hier</option>
                                         <option value="DAGSCHOTEL">Dagschotel</option>
                                         <option value="SOEP">Soep</option>
                                         <option value="VEGGIE">Veggie</option>
@@ -83,5 +84,6 @@
         </div>
     </div>
 </section>
+<jsp:include page="footer.jsp"/>
 </body>
 </html>

@@ -10,11 +10,12 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 @Configuration
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
+
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http
                 .authorizeRequests()
-                .mvcMatchers("/", "/login", "weekmenu/**", "/dagmenu/**")
+                .mvcMatchers("/", "/assets/**", "/login", "/changelanguage", "/weekmenu/**", "/dagmenu/**")
                 .permitAll()
                 .mvcMatchers("/gerechten").hasAnyRole("USER", "ADMIN")
                 .mvcMatchers("/gerechten/**").hasRole("ADMIN")
@@ -28,7 +29,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .and()
                 .logout()
                 .logoutSuccessUrl("/login?logout")
-                .invalidateHttpSession(true)
                 .permitAll()
                 .and()
                 .csrf()
