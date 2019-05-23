@@ -3,9 +3,9 @@
     <div class="content has-text-centered">
         <p>
         <form action="/changelanguage" method="post">
-            <button class="button" name="locale" type="submit" value="en"><spring:message code="lang.english"/></button>
-            <button class="button" name="locale" type="submit" value="nl"><spring:message code="lang.dutch"/></button>
-            <button class="button" name="locale" type="submit" value="fr"><spring:message code="lang.french"/></button>
+            <button class="button" name="locale" type="submit" value="en">English</button>
+            <button class="button" name="locale" type="submit" value="nl">Nederlands</button>
+            <button class="button" name="locale" type="submit" value="fr">français</button>
         </form>
         </p>
         <p>
