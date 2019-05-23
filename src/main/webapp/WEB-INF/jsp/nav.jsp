@@ -1,13 +1,18 @@
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
-<nav class="navbar is-primary" role="navigation">
+<nav class="navbar is-primary" role="navigation" aria-label="main navigation">
     <div class="navbar-brand">
         <span class="navbar-item is-size-4 has-text-weight-semibold">
             Umami Project
         </span>
+        <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasic">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+        </a>
     </div>
-    <div class="navbar-menu">
+    <div id="navbarBasic" class="navbar-menu">
         <div class="navbar-start">
             <a class="navbar-item" href="/">
                 <spring:message code="home"/>
