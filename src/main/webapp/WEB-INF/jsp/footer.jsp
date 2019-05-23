@@ -5,7 +5,7 @@
         <form action="/changelanguage" method="post">
             <button class="button" name="locale" type="submit" value="en">English</button>
             <button class="button" name="locale" type="submit" value="nl">Nederlands</button>
-            <button class="button" name="locale" type="submit" value="fr">français</button>
+            <button class="button" name="locale" type="submit" value="fr">fran&ccedil;ais</button>
         </form>
         </p>
         <p>
