@@ -14,7 +14,7 @@
 <section class="section">
     <div class="columns is-desktop">
         <div class="column is-half">
-            <h1 class="title">${pagetitle}</h1>
+            <h2 class="title">${pagetitle}</h2>
             <c:if test="${errors.size() > 0 }">
                 <div class="notification is-danger">
                     <ul>

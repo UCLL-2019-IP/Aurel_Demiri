@@ -19,7 +19,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @SpringBootTest
 public class GerechtenServiceUnitTest {
 
-    // Prevents commandlinerunner in Application.class to run
+    // Prevents CommandLineRunner in Application.class to run
     @MockBean
     private CommandLineRunner runner;
 

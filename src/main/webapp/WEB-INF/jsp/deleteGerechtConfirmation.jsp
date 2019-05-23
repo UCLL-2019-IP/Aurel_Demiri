@@ -14,7 +14,7 @@
 <section class="section">
     <div class="columns is-desktop">
         <div class="column is-one-third">
-            <h1 class="title">${pagetitle}</h1>
+            <h2 class="title">${pagetitle}</h2>
             <form method="post" action="delete?id=${gerecht.id}">
                 <p class="content"><spring:message code="delete.confirm.message"
                                                    arguments="${gerecht.beschrijving}"/></p>

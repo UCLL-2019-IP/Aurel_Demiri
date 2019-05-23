@@ -12,7 +12,7 @@
 <body class="main">
 <jsp:include page="nav.jsp"/>
 <section class="section">
-    <h1 class="title">${pagetitle}</h1>
+    <h2 class="title">${pagetitle}</h2>
     <c:choose>
         <c:when test="${gerechten.size() > 0}">
             <div class="overflowx-auto">
