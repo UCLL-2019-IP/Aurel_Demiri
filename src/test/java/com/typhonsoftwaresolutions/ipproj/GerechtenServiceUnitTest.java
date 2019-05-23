@@ -37,6 +37,6 @@ public class GerechtenServiceUnitTest {
     public void testGetGerechtbyBeschrijving() {
         Gerecht gerecht = new Gerecht("Kaas", 5d, "DAGSCHOTEL");
         Mockito.when(gerechtenRepository.findByBeschrijving(gerecht.getBeschrijving())).thenReturn(gerecht);
-        assertThat(gerechtenService.findGerechtById(gerecht.getBeschrijving())).isEqualTo(gerecht);
+        assertThat(gerechtenService.findGerechtByBeschrijving(gerecht.getBeschrijving())).isEqualTo(gerecht);
     }
 }

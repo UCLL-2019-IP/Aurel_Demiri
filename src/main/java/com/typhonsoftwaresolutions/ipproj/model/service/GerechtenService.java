@@ -38,6 +38,15 @@ public class GerechtenService {
         throw new IllegalArgumentException("Gerecht with this id could not be found");
     }
 
+    public Gerecht findGerechtByBeschrijving(String beschrijving) {
+        Gerecht x = gerechtenRepository.findByBeschrijving(beschrijving);
+
+        if (x != null)
+            return x;
+
+        throw new IllegalArgumentException("Gerecht with this beschrijving could not be found");
+    }
+
     public void updateGerecht(Integer id, Gerecht gerecht) {
         Gerecht foundGerecht = findGerechtById(id);
         foundGerecht.setBeschrijving(gerecht.getBeschrijving());
