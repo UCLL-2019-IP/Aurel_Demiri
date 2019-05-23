@@ -9,7 +9,7 @@
         </form>
         </p>
         <p>
-            <spring:message code="developed.by" text="default"/> Aurel Demiri (r0705950)
+            <spring:message code="developed.by"/> Aurel Demiri (r0705950)
         </p>
     </div>
 </footer>

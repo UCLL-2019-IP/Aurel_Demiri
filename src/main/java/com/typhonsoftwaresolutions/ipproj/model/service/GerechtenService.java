@@ -26,20 +26,20 @@ public class GerechtenService {
     }
 
     public void deleteGerecht(Gerecht gerecht) {
-        gerechtenRepository.delete(findGerechtByBeschrijving(gerecht.getBeschrijving()));
+        gerechtenRepository.delete(findGerechtById(gerecht.getId()));
     }
 
-    public Gerecht findGerechtByBeschrijving(String beschrijving) {
-        Gerecht x = gerechtenRepository.findByBeschrijving(beschrijving);
+    public Gerecht findGerechtById(Integer id) {
+        Gerecht x = gerechtenRepository.findById(id).orElse(null);
 
         if (x != null)
             return x;
 
-        throw new IllegalArgumentException("Gerecht with this beschrijving could not be found");
+        throw new IllegalArgumentException("Gerecht with this id could not be found");
     }
 
-    public void updateGerecht(String beschrijving, Gerecht gerecht) {
-        Gerecht foundGerecht = findGerechtByBeschrijving(beschrijving);
+    public void updateGerecht(Integer id, Gerecht gerecht) {
+        Gerecht foundGerecht = findGerechtById(id);
         foundGerecht.setBeschrijving(gerecht.getBeschrijving());
         foundGerecht.setPrijs(gerecht.getPrijs());
         foundGerecht.setType(gerecht.getType());

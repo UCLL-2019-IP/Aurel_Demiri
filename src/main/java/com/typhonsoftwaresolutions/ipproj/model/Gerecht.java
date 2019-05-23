@@ -1,9 +1,6 @@
 package com.typhonsoftwaresolutions.ipproj.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import javax.validation.constraints.*;
 
 @SuppressWarnings("WeakerAccess")
@@ -14,16 +11,17 @@ public class Gerecht {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
 
-    @NotEmpty(message = "Beschrijving should not be empty")
-    @Size(min = 4, max = 50, message = "Beschrijving length should be between 4 and 50")
+    @NotEmpty(message = "{meal.description.notempty}")
+    @Size(min = 4, max = 50, message = "{meal.description.size}")
+    @Column(unique = true)
     private String beschrijving;
 
-    @NotNull(message = "Prijs should not be empty")
-    @DecimalMin(value = "0.1", message = "Prijs should not be lower than 0.1")
-    @DecimalMax(value = "10", message = "Prijs should not be higher than 10")
+    @NotNull(message = "{meal.price.notnull}")
+    @DecimalMin(value = "0.1", message = "{meal.price.min}")
+    @DecimalMax(value = "10", message = "{meal.price.max}")
     private Double prijs;
 
-    @Pattern(regexp = "DAGSCHOTEL|SOEP|VEGGIE", message = "Invalid gerecht type")
+    @Pattern(regexp = "DAGSCHOTEL|SOEP|VEGGIE", message = "{meal.type.isinvalid}")
     private String type;
 
     public Gerecht() {

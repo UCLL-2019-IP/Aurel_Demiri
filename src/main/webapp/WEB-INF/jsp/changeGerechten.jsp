@@ -5,7 +5,7 @@
 
 <!DOCTYPE html>
 <html lang="${pageContext.response.locale}">
-<spring:message code="menu.edit" var="pagetitle"/>
+<spring:message code="meals.edit" var="pagetitle"/>
 <jsp:include page="head.jsp">
     <jsp:param name="title" value="${pagetitle}"/>
 </jsp:include>
@@ -15,38 +15,42 @@
     <h1 class="title">${pagetitle}</h1>
     <c:choose>
         <c:when test="${gerechten.size() > 0}">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th><spring:message code="description"/></th>
-                    <th><spring:message code="price"/></th>
-                    <th></th>
-                    <th></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="gerecht" items="${gerechten}">
+            <div class="overflowx-auto">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>${gerecht.beschrijving}</td>
-                        <td>${gerecht.prijs}&euro;</td>
-                        <td>
-                            <a class="button is-light"
-                               href="update?beschrijving=${gerecht.beschrijving}"><spring:message code="edit"/></a>
-                        </td>
-                        <td>
-                            <a class="button is-danger"
-                               href="delete?beschrijving=${gerecht.beschrijving}"><spring:message code="delete"/></a>
-                        </td>
+                        <th><spring:message code="description"/></th>
+                        <th><spring:message code="type"/></th>
+                        <th><spring:message code="price"/></th>
+                        <th></th>
+                        <th></th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="gerecht" items="${gerechten}">
+                        <tr>
+                            <td>${gerecht.beschrijving}</td>
+                            <td><spring:message code="${gerecht.type}"/></td>
+                            <td>&euro; ${gerecht.prijs}</td>
+                            <td>
+                                <a class="button is-light"
+                                   href="update?id=${gerecht.id}"><spring:message code="edit"/></a>
+                            </td>
+                            <td>
+                                <a class="button is-danger"
+                                   href="delete?id=${gerecht.id}"><spring:message code="delete"/></a>
+                            </td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </c:when>
         <c:otherwise>
             <h3 class="subtitle"><spring:message code="menu.empty"/></h3>
         </c:otherwise>
     </c:choose>
-    <a class="button is-primary is-medium" href="add"><spring:message code="meal.add"/></a>
+    <a class="button is-primary is-medium mb-1" href="add"><spring:message code="meal.add"/></a>
 </section>
 <jsp:include page="footer.jsp"/>
 </body>

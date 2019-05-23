@@ -11,3 +11,11 @@
 .footer {
     padding: 1rem 1.5rem 2rem;
 }
+
+.overflowx-auto {
+    overflow-x: auto;
+}
+
+.mb-1 {
+    margin-top: 1rem;
+}

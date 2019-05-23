@@ -1,17 +1,20 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
+
 <!DOCTYPE html>
-<html lang="en">
+<html lang="${pageContext.response.locale}">
+<spring:message code="meal.add" var="pagetitle"/>
 <jsp:include page="head.jsp">
-    <jsp:param name="title" value="Add Gerecht"/>
+    <jsp:param name="title" value="${pagetitle}"/>
 </jsp:include>
 <body class="main">
 <jsp:include page="nav.jsp"/>
 <section class="section">
     <div class="columns is-desktop">
         <div class="column is-half">
-            <h1 class="title">Add Gerecht</h1>
+            <h1 class="title">${pagetitle}</h1>
             <c:if test="${errors.size() > 0 }">
                 <div class="notification is-danger">
                     <ul>
@@ -24,7 +27,7 @@
             <form method="post" action="add">
                 <div class="field is-horizontal">
                     <div class="field-label">
-                        <label class="label" for="beschrijving">Beschrijving</label>
+                        <label class="label" for="beschrijving"><spring:message code="description"/></label>
                     </div>
                     <div class="field-body">
                         <div class="field">
@@ -37,7 +40,7 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label">
-                        <label class="label" for="prijs">Prijs</label>
+                        <label class="label" for="prijs"><spring:message code="price"/></label>
                     </div>
                     <div class="field-body">
                         <div class="field">
@@ -50,17 +53,18 @@
                 </div>
                 <div class="field is-horizontal">
                     <div class="field-label">
-                        <label class="label" for="type">Type</label>
+                        <label class="label" for="type"><spring:message code="type"/></label>
                     </div>
                     <div class="field-body">
                         <div class="field">
                             <div class="control">
                                 <div class="select">
                                     <select id="type" name="type" required>
-                                        <option value="" selected="selected" hidden="hidden">Choose here</option>
-                                        <option value="DAGSCHOTEL">Dagschotel</option>
-                                        <option value="SOEP">Soep</option>
-                                        <option value="VEGGIE">Veggie</option>
+                                        <option value="" selected="selected" hidden="hidden"><spring:message
+                                                code="choose.here"/></option>
+                                        <option value="DAGSCHOTEL"><spring:message code="DAGSCHOTEL"/></option>
+                                        <option value="SOEP"><spring:message code="SOEP"/></option>
+                                        <option value="VEGGIE"><spring:message code="VEGGIE"/></option>
                                     </select>
                                 </div>
                             </div>
@@ -70,12 +74,12 @@
                 <div class="field is-grouped is-grouped-right">
                     <p class="control">
                         <a class="button is-light" href="./change">
-                            Cancel
+                            <spring:message code="cancel"/>
                         </a>
                     </p>
                     <p class="control">
                         <button class="button is-primary">
-                            Add
+                            <spring:message code="apply"/>
                         </button>
                     </p>
                 </div>

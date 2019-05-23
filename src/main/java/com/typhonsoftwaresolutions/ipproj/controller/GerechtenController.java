@@ -50,33 +50,33 @@ public class GerechtenController {
     }
 
     @GetMapping("/gerechten/update")
-    public String updateGerechtForm(@RequestParam("beschrijving") String beschrijving, Model model) {
-        Gerecht gerecht = gerechtenService.findGerechtByBeschrijving(beschrijving);
+    public String updateGerechtForm(@RequestParam("id") Integer id, Model model) {
+        Gerecht gerecht = gerechtenService.findGerechtById(id);
         model.addAttribute("gerecht", gerecht);
         return "updateGerecht";
     }
 
     @PostMapping("/gerechten/update")
-    public String updateGerecht(@RequestParam("oudeBeschrijving") String oudeBeschrijving, @Valid Gerecht gerecht, BindingResult bindingResult, Model model) {
+    public String updateGerecht(@RequestParam("id") Integer id, @Valid Gerecht gerecht, BindingResult bindingResult, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("errors", bindingResult.getFieldErrors());
             return "updateGerecht";
         } else {
-            gerechtenService.updateGerecht(oudeBeschrijving, gerecht);
+            gerechtenService.updateGerecht(id, gerecht);
             return "redirect:./change";
         }
     }
 
     @GetMapping("/gerechten/delete")
-    public String deleteGerechtConfirmation(@RequestParam("beschrijving") String beschrijving, Model model) {
-        Gerecht gerecht = gerechtenService.findGerechtByBeschrijving(beschrijving);
+    public String deleteGerechtConfirmation(@RequestParam("id") Integer id, Model model) {
+        Gerecht gerecht = gerechtenService.findGerechtById(id);
         model.addAttribute("gerecht", gerecht);
         return "deleteGerechtConfirmation";
     }
 
     @PostMapping("/gerechten/delete")
-    public String deleteGerecht(@RequestParam("beschrijving") String beschrijving) {
-        Gerecht gerecht = gerechtenService.findGerechtByBeschrijving(beschrijving);
+    public String deleteGerecht(@RequestParam("id") Integer id) {
+        Gerecht gerecht = gerechtenService.findGerechtById(id);
         gerechtenService.deleteGerecht(gerecht);
         return "redirect:./change";
     }

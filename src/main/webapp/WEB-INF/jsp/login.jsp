@@ -38,7 +38,7 @@
                                     <i class="fa fa-envelope"></i>
                                 </span>
                                 <input id="username" name="username" class="input" type="text"
-                                       placeholder="<spring:message code="login.username"/>"/>
+                                       placeholder="<spring:message code="login.username"/>" required/>
                             </div>
                         </div>
                         <div class="field">
@@ -48,7 +48,7 @@
                                     <i class="fa fa-lock"></i>
                                 </span>
                                 <input id="password" name="password" class="input" type="password"
-                                       placeholder="<spring:message code="login.password"/>"/>
+                                       placeholder="<spring:message code="login.password"/>" required/>
                             </div>
                         </div>
                         <div class="field">

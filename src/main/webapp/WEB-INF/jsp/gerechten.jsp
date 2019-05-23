@@ -16,29 +16,33 @@
     <h1 class="title">${pagetitle}</h1>
     <c:choose>
         <c:when test="${gerechten.size() > 0}">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th><spring:message code="description"/></th>
-                    <th><spring:message code="price"/></th>
-                </tr>
-                </thead>
-                <tbody>
-                <c:forEach var="gerecht" items="${gerechten}">
+            <div class="overflowx-auto">
+                <table class="table">
+                    <thead>
                     <tr>
-                        <td>${gerecht.beschrijving}</td>
-                        <td>${gerecht.prijs}&euro;</td>
+                        <th><spring:message code="description"/></th>
+                        <th><spring:message code="type"/></th>
+                        <th><spring:message code="price"/></th>
                     </tr>
-                </c:forEach>
-                </tbody>
-            </table>
+                    </thead>
+                    <tbody>
+                    <c:forEach var="gerecht" items="${gerechten}">
+                        <tr>
+                            <td>${gerecht.beschrijving}</td>
+                            <td><spring:message code="${gerecht.type}"/></td>
+                            <td>&euro; ${gerecht.prijs}</td>
+                        </tr>
+                    </c:forEach>
+                    </tbody>
+                </table>
+            </div>
         </c:when>
         <c:otherwise>
             <h3 class="subtitle"><spring:message code="menu.empty"/></h3>
         </c:otherwise>
     </c:choose>
     <sec:authorize access="hasRole('ADMIN')">
-        <a class="button is-primary is-medium" href="/gerechten/change"><spring:message code="menu.edit"/></a>
+        <a class="button is-primary is-medium mb-1" href="/gerechten/change"><spring:message code="meals.edit"/></a>
     </sec:authorize>
 </section>
 <jsp:include page="footer.jsp"/>
