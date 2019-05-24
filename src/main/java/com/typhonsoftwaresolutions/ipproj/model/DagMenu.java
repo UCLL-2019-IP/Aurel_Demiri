@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.validation.constraints.NotNull;
 import java.time.LocalDate;
+import java.util.Objects;
 
 @Entity
 public class DagMenu {
@@ -91,5 +92,51 @@ public class DagMenu {
 
     public void setVeggie(Gerecht veggie) {
         this.veggie = veggie;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        DagMenu dagMenu = (DagMenu) o;
+        return datum.equals(dagMenu.datum) &&
+                soep.equals(dagMenu.soep) &&
+                dagschotel.equals(dagMenu.dagschotel) &&
+                veggie.equals(dagMenu.veggie);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(datum, soep, dagschotel, veggie);
+    }
+
+    public static class DagMenuBuilder {
+        private final LocalDate datum;
+        private Gerecht soep;
+        private Gerecht dagschotel;
+        private Gerecht veggie;
+
+        public DagMenuBuilder(LocalDate datum) {
+            this.datum = datum;
+        }
+
+        public DagMenuBuilder withSoep(Gerecht soep) {
+            this.soep = soep;
+            return this;
+        }
+
+        public DagMenuBuilder withDagschotel(Gerecht dagschotel) {
+            this.dagschotel = dagschotel;
+            return this;
+        }
+
+        public DagMenuBuilder withVeggie(Gerecht veggie) {
+            this.veggie = veggie;
+            return this;
+        }
+
+        public DagMenu build() {
+            return new DagMenu(datum, soep, dagschotel, veggie);
+        }
     }
 }

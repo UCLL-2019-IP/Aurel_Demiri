@@ -2,6 +2,7 @@ package com.typhonsoftwaresolutions.ipproj.model;
 
 import javax.persistence.*;
 import javax.validation.constraints.*;
+import java.util.Objects;
 
 @SuppressWarnings("WeakerAccess")
 @Entity
@@ -63,5 +64,44 @@ public class Gerecht {
 
     public void setType(String type) {
         this.type = type;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Gerecht gerecht = (Gerecht) o;
+        return beschrijving.equals(gerecht.beschrijving) &&
+                prijs.equals(gerecht.prijs) &&
+                type.equals(gerecht.type);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(beschrijving, prijs, type);
+    }
+
+    public static class GerechtBuilder {
+        private final String beschrijving;
+        private Double prijs;
+        private String type;
+
+        public GerechtBuilder(String beschrijving) {
+            this.beschrijving = beschrijving;
+        }
+
+        public GerechtBuilder withPrijs(Double prijs) {
+            this.prijs = prijs;
+            return this;
+        }
+
+        public GerechtBuilder withType(String type) {
+            this.type = type;
+            return this;
+        }
+
+        public Gerecht build() {
+            return new Gerecht(beschrijving, prijs, type);
+        }
     }
 }

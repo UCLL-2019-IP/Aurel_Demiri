@@ -21,12 +21,13 @@ public class GerechtenService {
         return gerechtenRepository.findAll();
     }
 
-    public void addGerecht(Gerecht gerecht) {
+    public Gerecht addGerecht(Gerecht gerecht) {
         gerechtenRepository.save(gerecht);
+        return gerecht;
     }
 
     public void deleteGerecht(Gerecht gerecht) {
-        gerechtenRepository.delete(findGerechtById(gerecht.getId()));
+        gerechtenRepository.delete(gerecht);
     }
 
     public Gerecht findGerechtById(Integer id) {
