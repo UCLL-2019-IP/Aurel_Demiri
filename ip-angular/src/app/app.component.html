@@ -17,7 +17,7 @@
     <div class="control">
       <div class="select is-dark">
         <select #weeknummerSelect (change)='onWeeknummerChange(weeknummerSelect.value)'>
-          <option *ngFor="let item of numberArray(1, 52)" [value]="item" [selected]="item == 8">{{ item }}</option>
+          <option *ngFor="let item of numberArray(1, 52)" [value]="item" [selected]="item == 22">{{ item }}</option>
         </select>
       </div>
     </div>
@@ -41,7 +41,7 @@
             <td><b>SOEP</b></td>
             <td class="has-text-centered" *ngFor="let index of numberArray(0, 7)">
               <div *ngIf="dagmenus$[index]">
-                {{ dagmenus$[index].soep.beschrijving }}<br />&euro; {{ dagmenus$[index].soep.prijs }}
+                {{ dagmenus$[index].soep.beschrijving }}<br/>&euro; {{ dagmenus$[index].soep.prijs | number: '1.2-2' }}
               </div>
             </td>
           </tr>
@@ -49,7 +49,8 @@
             <td><b>DAGSCHOTEL</b></td>
             <td class="has-text-centered" *ngFor="let index of numberArray(0, 7)">
               <div *ngIf="dagmenus$[index]">
-                {{ dagmenus$[index].dagschotel.beschrijving }}<br />&euro; {{ dagmenus$[index].dagschotel.prijs }}
+                {{ dagmenus$[index].dagschotel.beschrijving }}
+                <br/>&euro; {{ dagmenus$[index].dagschotel.prijs | number: '1.2-2' }}
               </div>
             </td>
           </tr>
@@ -57,7 +58,8 @@
             <td><b>VEGGIE</b></td>
             <td class="has-text-centered" *ngFor="let index of numberArray(0, 7)">
               <div *ngIf="dagmenus$[index]">
-                {{ dagmenus$[index].veggie.beschrijving }}<br />&euro; {{ dagmenus$[index].veggie.prijs }}
+                {{ dagmenus$[index].veggie.beschrijving }}
+                <br/>&euro; {{ dagmenus$[index].veggie.prijs | number: '1.2-2' }}
               </div>
             </td>
           </tr>

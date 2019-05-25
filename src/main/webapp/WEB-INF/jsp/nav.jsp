@@ -17,6 +17,14 @@
             <a class="navbar-item" href="/">
                 <spring:message code="home"/>
             </a>
+            <sec:authorize access="hasRole('ADMIN')">
+                <a class="navbar-item" href="/gerechten/change">
+                    <spring:message code="meals.edit"/>
+                </a>
+                <a class="navbar-item" href="/gerechten/add">
+                    <spring:message code="meal.add"/>
+                </a>
+            </sec:authorize>
         </div>
         <div class="navbar-end">
             <sec:authorize access="isAuthenticated()">

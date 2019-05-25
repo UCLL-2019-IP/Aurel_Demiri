@@ -1,13 +1,13 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
-import { DagMenu } from './dagmenu.model';
+import {Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
+import {DagMenu} from './dagmenu.model';
 
 @Injectable({
   providedIn: 'root'
 })
 export class RestService {
   jaar = '2019';
-  weeknummer = '8';
+  weeknummer = '22';
   apiUrl = 'http://193.191.177.8:10977/weekmenu/';
 
   constructor(private _http: HttpClient) { }

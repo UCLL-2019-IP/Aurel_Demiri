@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="sec" uri="http://www.springframework.org/security/tags" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 
@@ -21,16 +22,17 @@
                     <thead>
                     <tr>
                         <th><spring:message code="description"/></th>
-                        <th><spring:message code="type"/></th>
                         <th><spring:message code="price"/></th>
+                        <th><spring:message code="type"/></th>
                     </tr>
                     </thead>
                     <tbody>
                     <c:forEach var="gerecht" items="${gerechten}">
                         <tr>
                             <td>${gerecht.beschrijving}</td>
+                            <td>&euro; <fmt:formatNumber type="number" minFractionDigits="2"
+                                                         maxFractionDigits="2" value="${gerecht.prijs}"/></td>
                             <td><spring:message code="${gerecht.type}"/></td>
-                            <td>&euro; ${gerecht.prijs}</td>
                         </tr>
                     </c:forEach>
                     </tbody>
