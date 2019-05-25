@@ -29,7 +29,7 @@ public class Application {
             gerechtenRepository.save(new Gerecht("Tomatensoep", 1.30d, "SOEP"));
             gerechtenRepository.save(new Gerecht("Pompoensoep", 0.90d, "SOEP"));
             gerechtenRepository.save(new Gerecht("Broccolisoep", 1.20d, "SOEP"));
-            gerechtenRepository.save(new Gerecht("Champignonsoep", 1.50d, "SOEP"));
+            gerechtenRepository.save(new Gerecht("Champignonsoep", 1.60d, "SOEP"));
             gerechtenRepository.save(new Gerecht("Groentesoep", 1.60d, "SOEP"));
             gerechtenRepository.save(new Gerecht("Kippensoep", 2.00d, "SOEP"));
             gerechtenRepository.save(new Gerecht("Misosoep", 1.30d, "SOEP"));
