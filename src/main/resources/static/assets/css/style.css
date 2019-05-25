@@ -23,3 +23,7 @@
 th {
   white-space: nowrap;
 }
+
+.nowordwrap {
+  white-space: nowrap;
+}

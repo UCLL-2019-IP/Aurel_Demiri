@@ -30,7 +30,7 @@
                     <c:forEach var="gerecht" items="${gerechten}">
                         <tr>
                             <td>${gerecht.beschrijving}</td>
-                            <td>&euro; <fmt:formatNumber type="number" minFractionDigits="2"
+                            <td class="nowordwrap">&euro; <fmt:formatNumber type="number" minFractionDigits="2"
                                                          maxFractionDigits="2" value="${gerecht.prijs}"/></td>
                             <td><spring:message code="${gerecht.type}"/></td>
                         </tr>
